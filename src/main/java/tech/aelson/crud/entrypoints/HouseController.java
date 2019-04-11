@@ -13,7 +13,7 @@ public class HouseController {
     @Autowired
     private SaveHouse saveHouse;
 
-    @PostMapping
+    @PostMapping(value = "/houses")
     public House create(@RequestBody final House house) {
         return saveHouse.execute(house);
     }
