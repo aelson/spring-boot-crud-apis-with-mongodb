@@ -3,6 +3,7 @@ package tech.aelson.crud.entrypoints;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tech.aelson.crud.model.House;
+import tech.aelson.crud.usecases.DeleteHouse;
 import tech.aelson.crud.usecases.GetHouseById;
 import tech.aelson.crud.usecases.SaveHouse;
 
@@ -14,6 +15,9 @@ public class HouseController {
 
     @Autowired
     private GetHouseById getHouseById;
+
+    @Autowired
+    private DeleteHouse deleteHouse;
 
     @PostMapping(value = "/houses")
     public House create(@RequestBody final House house) {
@@ -28,5 +32,10 @@ public class HouseController {
     @PutMapping(value = "/houses")
     public House update(@RequestBody final House house) throws Exception {
         return saveHouse.execute(house);
+    }
+
+    @DeleteMapping(value = "/houses/{id}")
+    public void delete(@PathVariable final String id) {
+        deleteHouse.execute(id);
     }
 }
