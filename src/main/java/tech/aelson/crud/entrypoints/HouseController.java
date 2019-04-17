@@ -24,4 +24,9 @@ public class HouseController {
     public House find(@PathVariable final String id) throws Exception {
         return getHouseById.execute(id);
     }
+
+    @PutMapping(value = "/houses")
+    public House update(@RequestBody final House house) throws Exception {
+        return saveHouse.execute(house);
+    }
 }
