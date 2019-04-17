@@ -30,7 +30,7 @@ public class HouseController {
     }
 
     @PutMapping(value = "/houses")
-    public House update(@RequestBody final House house) throws Exception {
+    public House update(@RequestBody final House house) {
         return saveHouse.execute(house);
     }
 
